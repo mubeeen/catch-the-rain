@@ -5,7 +5,7 @@ export default class Rain
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
-        this.maxSpeed = 3;
+        this.maxSpeed = 10;
         this.speed = 0;
         
         this.height = 30;
@@ -31,13 +31,15 @@ export default class Rain
         }
         this.position.y += this.maxSpeed;
 
-        if (this.position.y >= this.gameHeight || isCollide.isTouched === true) {
+        if ( isCollide.isTouched === true ) {                                       //check if collide with paddle
             this.position.x = this.generateRandomNumber(0,this.gameWidth);
             this.position.y = 0;
             isCollide.isTouched = false;
-            if (this.position.y >= this.gameHeight){
-                isCollide.isDroped = true;
-            }
+        }
+        if (this.position.y >= this.gameHeight) {                                    //check if fall down
+            this.position.x = this.generateRandomNumber(0,this.gameWidth);
+            this.position.y = 0;
+            isCollide.isDroped = true;
         }
     }
     draw(ctx,imgApple) {

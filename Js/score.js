@@ -2,14 +2,11 @@ export default class Score
 {
     constructor(paddel,rain,paddleWidth) {
 
-        this.score = 0;
-        this.drop = 0;
-
         this.paddlePos = paddel.position;
         this.rainPos  = rain.position;
         this.paddleWidth = paddleWidth;
     }
-    paddleBallCollision(isCollide,ctx) {                                         //check if the paddle and our sprite collide or not
+    paddleBallCollision(isCollide) {                                         //check if the paddle and our sprite collide or not
         let bottomOfSprite = this.rainPos.y;
         let topOfPaddle = this.paddlePos.y;
 
@@ -23,16 +20,12 @@ export default class Score
             )
         ) {
             isCollide.isTouched = true;
-            this.incrementScore();
+            isCollide.score += 1;                               //increment (Score) in score on colliding with bar
+        }
+        if ( isCollide.isDroped == true ) {                     //increment (Drop) in drop variable incase of missing the rain
+            isCollide.isDroped = false;
+            isCollide.drop += 1;
         }
         
-    }
-    incrementScore() {
-        this.score += 1;
-        console.log(this.score);
-    }
-    incrementDrop() {
-        this.drop += 1;
-        console.log("score : ", this.score);
     }
 }
