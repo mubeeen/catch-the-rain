@@ -24,19 +24,15 @@ export default class Score
         ) {
             isCollide.isTouched = true;
             this.incrementScore();
-            this.drawScore(ctx);
         }
-    }
-    drawScore(ctx) {
-        ctx.font = "19px Arial";
-        ctx.fillStyle = "#0095DD";
         
-      }
+    }
     incrementScore() {
         this.score += 1;
-        console.log("score : ", this.score);
+        console.log(this.score);
     }
     incrementDrop() {
         this.drop += 1;
+        console.log("score : ", this.score);
     }
 }

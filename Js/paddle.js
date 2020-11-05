@@ -6,7 +6,7 @@ export default class Paddel {
 		this.gameWidth = gameWidth;
 
 		this.width = 150;
-		this.height = 80;
+		this.height = 50;
 
 		this.maxSpeed = 10;
 		this.speed = 0;
