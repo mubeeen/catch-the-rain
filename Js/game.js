@@ -3,6 +3,7 @@ import Paddle from './paddle.js';
 import Rain from './rain.js';
 import Score from './score.js';
 import DisplayScore from './displayScore.js';
+import Sprites from './sprites.js';
 
 export default class Game {
 
@@ -22,19 +23,6 @@ export default class Game {
             isTouched : false,
             isDroped : false,
         };
-        
-        //List of Fruits
-
-        this.Fruits = [
-            "apple.png",
-            "grapes.png",
-            "cherry.png",
-            "mango.png",
-            "orange.png",
-            "watermelon.png",
-            "pineapple.png",
-            "strawberry.png",
-        ];
 
         //Game states
 
@@ -52,11 +40,10 @@ export default class Game {
 
         //setting rain image
 
-        let url = './assests/' + this.Fruits[2];
+        let url = './assests/apple.png';
         
         this.imgApple = new Image();
         this.imgApple.src = url;
-
         //Object declarartion
 
         this.gamestate = this.GAMESTATE.MENU;
@@ -66,15 +53,8 @@ export default class Game {
         this.score = new Score(this.paddle,this.rain,this.paddle.width);
         this.dispScore = new DisplayScore();
         new InputHandler(this.paddle,this);
+        this.sprites = new Sprites(this.ctx,this.isCollide,this.imgApple);
     }
-
-    generateRandomNumber(min, max) {  
-	    min = Math.ceil(min); 
-	    max = Math.floor(max); 
-
-	    return Math.floor(Math.random() * (max - min + 1)) + min; 
-    }  
-
     playGame()
     {
         this.gamestate = this.GAMESTATE.RUNNING;
@@ -96,20 +76,8 @@ export default class Game {
         this.score.paddleBallCollision(this.isCollide);
         this.dispScore.displayScoreOnUI(this.ctx,this.isCollide,this.gameHeight,this.gameWidth);
 
-        //console.log(this.Fruits[2]);
-
-
-        //console.log(this.Fruits);
-        //this.dispScore.displayScoreOnUI(this.ctx,this.isCollide);
+        this.sprites.generateSprite(this.imgApple);
         
-        //testing
-        if(this.isCollide.isTouched === true || this.isCollide.isDroped === true) {
-            //console.log(this.Fruits[0]);
-            let val = this.generateRandomNumber(0,7);
-            let url = './assests/' + this.Fruits[val];
-            console.log(url);
-            this.imgApple.src = url;
-        }
     }
 
     drawPausedScreen() {
