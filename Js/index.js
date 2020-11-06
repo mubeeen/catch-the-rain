@@ -6,7 +6,7 @@ let ctx = canvas.getContext("2d");
 ctx.font = "40px Arial";
 ctx.fillStyle = "red";
 
-const GAME_WIDTH = 800;
+const GAME_WIDTH = 1000;
 const GAME_HEIGHT = 600;
 
 //get Images

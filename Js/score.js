@@ -26,6 +26,5 @@ export default class Score
             isCollide.isDroped = false;
             isCollide.drop += 1;
         }
-        
     }
 }

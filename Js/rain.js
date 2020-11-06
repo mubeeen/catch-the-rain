@@ -8,8 +8,8 @@ export default class Rain
         this.maxSpeed = 10;
         this.speed = 0;
         
-        this.height = 30;
-        this.width = 30;
+        this.height = 50;
+        this.width = 50;
 
         this.position = {
             x: 0,
@@ -41,6 +41,14 @@ export default class Rain
             this.position.y = 0;
             isCollide.isDroped = true;
         }
+
+        if (this.position.x <= 0) {
+			this.position.x = 0;
+		}
+		if (this.position.x + this.width >= this.gameWidth) {
+			this.position.x = this.gameWidth - this.width;
+        }
+        
     }
     draw(ctx,imgApple) {
         ctx.fillStyle = '#0f0';

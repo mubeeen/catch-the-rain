@@ -8,7 +8,7 @@ export default class Paddel {
 		this.width = 150;
 		this.height = 50;
 
-		this.maxSpeed = 15;
+		this.maxSpeed = 20;
 		this.speed = 0;
 
 		this.position = {
