@@ -79,7 +79,7 @@ export default class Game {
     {
         this.gamestate = this.GAMESTATE.RUNNING;
     }
-    start(deltaTime) {                                                      //function to initiate the game
+    start(deltaTime) {                                                       //function to initiate the game
 
         if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU)                            //Function added for Pausing the game
         {
