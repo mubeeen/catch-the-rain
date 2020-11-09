@@ -1,3 +1,5 @@
+import SuccessSound from './success-sound.js';
+
 export default class Rain
 {
     constructor(gameWidth, gameHeight) {
@@ -18,6 +20,8 @@ export default class Rain
 
         this.position.x = this.generateRandomNumber(0,this.gameWidth);
 
+        this.audio = new SuccessSound();
+
     }
     generateRandomNumber(min, max) {  
 	    min = Math.ceil(min); 
@@ -32,6 +36,7 @@ export default class Rain
         this.position.y += this.maxSpeed;
 
         if ( isCollide.isTouched === true ) {                                       //check if collide with paddle
+            this.audio.play();                                                      //play when catch                                                            
             this.position.x = this.generateRandomNumber(0,this.gameWidth);
             this.position.y = 0;
             isCollide.isTouched = false;

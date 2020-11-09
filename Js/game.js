@@ -4,6 +4,7 @@ import Rain from './rain.js';
 import Score from './score.js';
 import DisplayScore from './displayScore.js';
 import Sprites from './sprites.js';
+import BackgroundSound from './background-sound.js';
 
 export default class Game {
 
@@ -47,7 +48,8 @@ export default class Game {
         //Object declarartion
 
         this.gamestate = this.GAMESTATE.MENU;
-
+        
+        this.audio = new BackgroundSound();
         this.paddle = new Paddle(GAME_WIDTH,GAME_HEIGHT);
         this.rain = new Rain(GAME_WIDTH,GAME_HEIGHT);
         this.score = new Score(this.paddle,this.rain,this.paddle.width);
@@ -64,8 +66,10 @@ export default class Game {
         if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU)                            //Function added for Pausing the game
         {
             this.drawPausedScreen();
+            this.audio.pause();
             return;
         }
+        this.audio.play();
 
         this.paddle.update(deltaTime);                                      //function to update paddle
         this.paddle.draw(this.ctx,this.imgPaddle);                          //function to draw
