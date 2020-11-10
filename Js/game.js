@@ -74,11 +74,12 @@ export default class Game {
         if(this.isCollide.drop === 3)
         {
             this.gamestate = this.GAMESTATE.GAMEOVER;
-            this.ctx.fillStyle = "white";
-                this.ctx.textAlign = "center";
-                this.ctx.fillText("GAME OVER", this.gameWidth / 2 , this.gameHeight / 2);
-                endGame(this.gameName,this.isCollide.score,this.isCollide.drop);
-                return;
+            this.ctx.fillStyle = "black";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText("GAME OVER", this.gameWidth / 2 , this.gameHeight / 2.5);
+            this.ctx.fillText("Your Score : " + this.isCollide.score, this.gameWidth / 2 , this.gameHeight / 2);
+            this.endGame(this.gameName,this.isCollide.score,this.isCollide.drop);
+            return;
         }
 
         this.audio.play();
@@ -93,7 +94,7 @@ export default class Game {
         this.sprites.generateSprite(this.imgApple);
 
         this.dispScore.displayScoreOnUI(this.ctx,this.isCollide,this.gameHeight,this.gameWidth);
-  
+
     }
 
 
