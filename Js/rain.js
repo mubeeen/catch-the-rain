@@ -20,7 +20,7 @@ export default class Rain
 
         this.position.x = this.generateRandomNumber(0,this.gameWidth);
 
-        this.audio = new SuccessSound();
+        this.successAudio = new SuccessSound();
 
     }
     generateRandomNumber(min, max) {  
@@ -36,17 +36,18 @@ export default class Rain
         this.position.y += this.maxSpeed;
 
         if ( isCollide.isTouched === true ) {                                       //check if collide with paddle
-            this.audio.play();                                                      //play when catch                                                            
+            this.successAudio.play();                                                      //play when catch                                                            
             this.position.x = this.generateRandomNumber(0,this.gameWidth);
             this.position.y = 0;
             isCollide.isTouched = false;
         }
-        if (this.position.y >= this.gameHeight) {                                    //check if fall down
+        if ( isCollide.isDroped === true ) {                                       //check if collide with paddle
+            //this.audio.play();                                                                 //play when drop                                                            
             this.position.x = this.generateRandomNumber(0,this.gameWidth);
             this.position.y = 0;
-            isCollide.isDroped = true;
+            isCollide.isDroped = false;
         }
-
+        
         if (this.position.x <= 0) {
 			this.position.x = 0;
 		}

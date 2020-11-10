@@ -5,11 +5,9 @@ export default class InputHandler {
         document.addEventListener("keydown", event => {
             switch(event.keyCode){
                 case 37:
-                    //console.log("Move Left");
                     Paddel.moveLeft();
                     break;
                 case 39:
-                    //console.log("Move Left");
                     Paddel.moveRight();
                     break;
                 case 27:
@@ -33,5 +31,13 @@ export default class InputHandler {
                     break;
             }
         });
+
+        //getMousePosition
+        document.addEventListener("mousemove" , event => {
+            /*console.log( `x: ${event.x} | y: ${event.y}`);
+            Paddel.moveLeft(event.x);*/
+            Paddel.controlMouse(event.x);
+        });
+
     }
 }

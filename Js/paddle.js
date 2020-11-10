@@ -26,7 +26,7 @@ export default class Paddel {
 	update(deltaTime) {				//updating the paddle
 		if(!deltaTime) return;
 		
-		this.position.x += this.speed;
+		this.position.x = this.speed;
 
 		if (this.position.x <= 0) {
 			this.position.x = 0;
@@ -35,7 +35,9 @@ export default class Paddel {
 			this.position.x = this.gameWidth - this.width;
 		}
 	}
-
+	controlMouse(x) {
+		this.speed = x - (this.width / 2) ;
+	}
 	moveLeft() {						//move paddle to left
 		this.speed = -this.maxSpeed;
 	}

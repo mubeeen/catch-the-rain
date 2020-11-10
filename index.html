@@ -7,14 +7,35 @@
 	<style>
 		#gameScreen {
 			border: 1px solid black;
-			margin-top: 5%;
+			margin-top: 1%;
 		}
+		#container
+		{
+			height: 400px;
+			position: relative;
+			width: 400px;
+		}
+		#controls
+		{
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			width: 100%;
+		}
+
 	</style>
 </head>
 <body>
 	
-	<center><canvas id="gameScreen" width="1000" height="600" style="background: url('./assests/game-background4.jpg')"></canvas></center>
+	<h3>Catch the sprites</h3>
+	<p>Press ESC to Pause/Play game</p>
+	<div id="container">
+		<center><canvas id="gameScreen" width="1000" height="600" style="background: url('./assests/game-background4.jpg')"></canvas>
+		<!--<menu id="controls"><button>Clickme!</button></menu>-->
+		</center>
 
+	</div>
+	
 
 	<script type="module" src="./Js/index.js"></script>
 	<script type="module" src="./Js/paddle.js"></script>
@@ -26,6 +47,7 @@
 	<script type="module" src="./Js/displayScore.js"></script>
 	<script type="module" src="./Js/sprites.js"></script>
 	<script type="module" src="./Js/background-sound.js"></script>
+	<script type="module" src="./Js/success-sound.js"></script>
 
 </body>
 </html>

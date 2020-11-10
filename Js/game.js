@@ -12,6 +12,7 @@ export default class Game {
 
         //setting parameters
 
+        this.gameName = "Catch the Fruits";
         this.gameHeight = GAME_HEIGHT;
         this.gameWidth = GAME_WIDTH;
         this.ctx = ctx;
@@ -42,9 +43,9 @@ export default class Game {
         //setting rain image
 
         let url = './assests/apple.png';
-        
         this.imgApple = new Image();
         this.imgApple.src = url;
+
         //Object declarartion
 
         this.gamestate = this.GAMESTATE.MENU;
@@ -69,6 +70,17 @@ export default class Game {
             this.audio.pause();
             return;
         }
+
+        if(this.isCollide.drop === 3)
+        {
+            this.gamestate = this.GAMESTATE.GAMEOVER;
+            this.ctx.fillStyle = "white";
+                this.ctx.textAlign = "center";
+                this.ctx.fillText("GAME OVER", this.gameWidth / 2 , this.gameHeight / 2);
+                endGame(this.gameName,this.isCollide.score,this.isCollide.drop);
+                return;
+        }
+
         this.audio.play();
 
         this.paddle.update(deltaTime);                                      //function to update paddle
@@ -77,13 +89,18 @@ export default class Game {
         this.rain.update(deltaTime,this.isCollide);                         //function to updage the rain
         this.rain.draw(this.ctx,this.imgApple);                             //function to draw rain after uptodation 
 
-        this.score.paddleBallCollision(this.isCollide);
-        this.dispScore.displayScoreOnUI(this.ctx,this.isCollide,this.gameHeight,this.gameWidth);
-
+        this.score.paddleBallCollision(this.isCollide,this.gameHeight);
         this.sprites.generateSprite(this.imgApple);
-        
+
+        this.dispScore.displayScoreOnUI(this.ctx,this.isCollide,this.gameHeight,this.gameWidth);
+  
     }
 
+
+    //for testing
+    endGame(gameName,scoreAchieved,scoreDropped) {
+        GameManager.endGame(gameName,scoreAchieved,scoreDropped);
+    }
     drawPausedScreen() {
         if(this.gamestate == this.GAMESTATE.PAUSED){
         this.ctx.rect(0,0,this.gameWidth,this.gameHeight);

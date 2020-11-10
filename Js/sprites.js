@@ -25,8 +25,8 @@ export default class Sprites{
 
 	    return Math.floor(Math.random() * (max - min + 1)) + min; 
     }  
-    generateSprite(img){
-        if(this.isCollide.isTouched === true || this.isCollide.isDroped === true) {
+    generateSprite(img) {
+        if(this.isCollide.isDroped === true || this.isCollide.isTouched === true) {
             let val = this.generateRandomNumber(0,this.FruitsArrLength);
             let url = './assests/' + this.Fruits[val];
             img.src = url;
