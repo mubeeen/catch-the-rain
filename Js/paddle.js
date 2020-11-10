@@ -18,8 +18,6 @@ export default class Paddel {
 	}
 
 	draw(ctx,imgPaddle) {
-		//ctx.fillStyle = '#0f0';
-		//ctx.fillRect(this.position.x,this.position.y,this.width,this.height);
 		ctx.drawImage(imgPaddle,this.position.x,this.position.y,this.width,this.height);
 	}
 

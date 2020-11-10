@@ -20,20 +20,23 @@
 			bottom: 0;
 			left: 0;
 			position: absolute;
-			margin-left: 850px;
+			margin-left: 800px;
 		}
 
 	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	
 	<h3>Catch the sprites</h3>
 	<p>Press ESC to Pause/Play game</p>
 	<div id="container">
 		<center><canvas id="gameScreen" width="1000" height="600" style="background: url('./assests/game-background4.jpg')"></canvas>
-		<menu id="controls"><button onclick="">Mute Audio</button></menu>
+		<menu id="controls">
+			<button href="" id="pause-play" class="fa fa-play"></button> <!--pause and play-->
+			<button href="" id="bk-audio" class="fas fa-volume-up"></button>	<!--background Audio-->
+			<button href="" id="restart" class="fa fa-undo"></button>	<!--Game restart-->
+		</menu>
 		</center>
-
 	</div>
 	
 

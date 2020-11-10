@@ -39,7 +39,7 @@ export default class Game {
 
         this.imgPaddle = new Image();
         this.imgPaddle.src = './assests/basket.png';
-
+        
         //setting rain image
 
         let url = './assests/apple.png';
@@ -64,7 +64,7 @@ export default class Game {
     }
     start(deltaTime) {                                                       //function to initiate the game
 
-        if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU)                            //Function added for Pausing the game
+        if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU || this.gamestate == this.GAMESTATE.GAMEOVER)                            //Function added for Pausing the game
         {
             this.drawPausedScreen();
             this.audio.pause();
@@ -74,12 +74,6 @@ export default class Game {
         if(this.isCollide.drop === 3)
         {
             this.gamestate = this.GAMESTATE.GAMEOVER;
-            this.ctx.fillStyle = "black";
-            this.ctx.textAlign = "center";
-            this.ctx.fillText("GAME OVER", this.gameWidth / 2 , this.gameHeight / 2.5);
-            this.ctx.fillText("Your Score : " + this.isCollide.score, this.gameWidth / 2 , this.gameHeight / 2);
-            this.endGame(this.gameName,this.isCollide.score,this.isCollide.drop);
-            return;
         }
 
         this.audio.play();
@@ -103,7 +97,7 @@ export default class Game {
         GameManager.endGame(gameName,scoreAchieved,scoreDropped);
     }
     drawPausedScreen() {
-        if(this.gamestate == this.GAMESTATE.PAUSED){
+        if(this.gamestate == this.GAMESTATE.PAUSED) {
         this.ctx.rect(0,0,this.gameWidth,this.gameHeight);
             this.ctx.fillStyle = "rgba(0,0,0,0.5)";
             this.ctx.fill();
@@ -113,7 +107,8 @@ export default class Game {
             this.ctx.textAlign = "center";
             this.ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
         }
-        if(this.gamestate == this.GAMESTATE.MENU){
+
+        if(this.gamestate == this.GAMESTATE.MENU) {
             this.ctx.rect(0,0,this.gameWidth,this.gameHeight);
                 this.ctx.fillStyle = "rgba(0,0,0,1)";
                 this.ctx.fill();
@@ -122,9 +117,18 @@ export default class Game {
                 this.ctx.fillStyle = "white";
                 this.ctx.textAlign = "center";
                 this.ctx.fillText("Press Space to Start", this.gameWidth / 2 , this.gameHeight / 2);
-            }
+        }
+
+        if(this.gamestate == this.GAMESTATE.GAMEOVER) {
+            this.ctx.fillStyle = "black";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText("GAME OVER", this.gameWidth / 2 , this.gameHeight / 2.5);
+            this.ctx.fillText("Your Score : " + this.isCollide.score, this.gameWidth / 2 , this.gameHeight / 2);
+            //this.endGame(this.gameName,this.isCollide.score,this.isCollide.drop);
+        }
     }
-    togglePause() {   
+
+    togglePause() {                                                     //on Press pause and play button
                                                                         //game state
         if (this.gamestate == this.GAMESTATE.PAUSED) {
             this.gamestate = this.GAMESTATE.RUNNING;
@@ -132,5 +136,13 @@ export default class Game {
         else {
             this.gamestate = this.GAMESTATE.PAUSED;
         }
+    }
+
+    reset() {
+        this.isCollide.score = 0;
+        this.isCollide.drop = 0;
+        this.isCollide.isDroped = false;
+        this.isCollide.isTouched = false;
+        this.gamestate =  this.GAMESTATE.RUNNING;
     }
 }

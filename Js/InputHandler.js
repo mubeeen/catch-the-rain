@@ -19,6 +19,23 @@ export default class InputHandler {
             }
         });
 
+        //add buttons
+        document.getElementById("restart").addEventListener("click", function() {
+            //console.log("reset");
+            game.reset();
+          });
+
+        document.getElementById("pause-play").addEventListener("click", function() {
+            console.log("Pause");
+            game.togglePause();
+          });
+
+        document.getElementById("bk-audio").addEventListener("click", function() {          //error in function need to check
+            game.audio.muted = true;
+          });
+
+
+
         //keyUP
 
         document.addEventListener("keyup" , event => {

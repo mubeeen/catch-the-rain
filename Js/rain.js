@@ -22,12 +22,14 @@ export default class Rain
         this.successAudio = new SuccessSound();
 
     }
+
     generateRandomNumber(min, max) {  
 	    min = Math.ceil(min); 
 	    max = Math.floor(max); 
 
 	    return Math.floor(Math.random() * (max - min + 1)) + min; 
     }  
+
     update(deltaTime,isCollide) {
         if(!deltaTime) {
             return;
@@ -40,8 +42,7 @@ export default class Rain
             this.position.y = 0;
             isCollide.isTouched = false;
         }
-        if ( isCollide.isDroped === true ) {                                       //check if collide with paddle
-            //this.audio.play();                                                                 //play when drop                                                            
+        if ( isCollide.isDroped === true ) {                                       //check if collide with paddle                                                                                                                                            
             this.position.x = this.generateRandomNumber(0,this.gameWidth);
             this.position.y = 0;
             isCollide.isDroped = false;
@@ -55,6 +56,7 @@ export default class Rain
         }
         
     }
+
     draw( ctx,imgApple ) {
         ctx.fillStyle = '#0f0';
 		ctx.drawImage(imgApple,this.position.x,this.position.y,this.width,this.height);
