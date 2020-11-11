@@ -15,8 +15,8 @@ window.addEventListener("resize",render);
 
 render();
 
-let GAME_WIDTH = document.getElementById('gameScreen').offsetWidth;
-let GAME_HEIGHT = document.getElementById('gameScreen').offsetHeight;
+let GAME_WIDTH = ctx.canvas.width;
+let GAME_HEIGHT = ctx.canvas.height;
 
 //get Images
 
