@@ -21,7 +21,6 @@ export default class InputHandler {
 
         //add buttons
         document.getElementById("restart").addEventListener("click", function() {
-            //console.log("reset");
             game.reset();
           });
 
@@ -48,11 +47,11 @@ export default class InputHandler {
                     break;
             }
         });
-
+        
         //getMousePosition
         document.addEventListener("mousemove" , event => {
-            /*console.log( `x: ${event.x} | y: ${event.y}`);
-            Paddel.moveLeft(event.x);*/
+            //console.log( `x: ${event.x} | y: ${event.y}`);
+            //Paddel.moveLeft(event.x);
             Paddel.controlMouse(event.x);
         });
 

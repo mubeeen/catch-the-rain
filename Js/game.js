@@ -17,6 +17,11 @@ export default class Game {
         this.gameWidth = GAME_WIDTH;
         this.ctx = ctx;
 
+        
+        //canvas setting for height to make it responsive
+
+
+
         //Score managment object
 
         this.isCollide = {
@@ -55,7 +60,7 @@ export default class Game {
         this.rain = new Rain(GAME_WIDTH,GAME_HEIGHT);
         this.score = new Score(this.paddle,this.rain,this.paddle.width);
         this.dispScore = new DisplayScore();
-        new InputHandler(this.paddle,this);
+        new InputHandler(this.paddle,this,this.ctx);
         this.sprites = new Sprites(this.ctx,this.isCollide,this.imgApple);
     }
     playGame()

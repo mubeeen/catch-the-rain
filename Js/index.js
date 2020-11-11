@@ -6,8 +6,17 @@ let ctx = canvas.getContext("2d");
 ctx.font = "40px Arial";
 ctx.fillStyle = "red";
 
-const GAME_WIDTH = 1000;
-const GAME_HEIGHT = 600;
+var render = function() {
+    ctx.canvas.width = document.documentElement.clientWidth * 0.9;
+    ctx.canvas.height = document.documentElement.clientHeight * 0.9;
+}
+
+window.addEventListener("resize",render);
+
+render();
+
+const GAME_WIDTH = document.getElementById('gameScreen').offsetWidth;
+const GAME_HEIGHT = document.getElementById('gameScreen').offsetHeight;
 
 //get Images
 

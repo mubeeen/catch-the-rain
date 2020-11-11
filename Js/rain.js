@@ -7,11 +7,11 @@ export default class Rain
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
-        this.maxSpeed = 10;
+        this.maxSpeed = 7;
         this.speed = 0;
         
-        this.height = 50;
-        this.width = 50;
+        this.height = this.gameHeight * 0.084;
+        this.width = this.gameWidth * 0.05;
 
         this.position = {
             x: 0,

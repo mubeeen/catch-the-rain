@@ -5,8 +5,8 @@ export default class Paddel {
 		this.gameHeight = gameHeight;
 		this.gameWidth = gameWidth;
 
-		this.width = 150;
-		this.height = 50;
+		this.width = this.gameWidth * 0.15;
+		this.height = this.gameHeight * 0.15;
 
 		this.maxSpeed = 20;
 		this.speed = 0;
@@ -25,6 +25,7 @@ export default class Paddel {
 		if(!deltaTime) return;
 		
 		this.position.x = this.speed;
+		//console.log("PADDLE" , this.position.x);
 
 		if (this.position.x <= 0) {
 			this.position.x = 0;
@@ -34,7 +35,7 @@ export default class Paddel {
 		}
 	}
 	controlMouse(x) {
-		this.speed = x - (this.width / 2) ;
+		this.speed = x - this.width / 2;
 	}
 	moveLeft() {						//move paddle to left
 		this.speed = -this.maxSpeed;
