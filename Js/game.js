@@ -69,6 +69,9 @@ export default class Game {
     }
     start(deltaTime) {                                                       //function to initiate the game
 
+        //this.gameWidth = document.getElementById('gameScreen').offsetWidth;
+        //this.gameHeight = document.getElementById('gameScreen').offsetHeight;
+
         if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU || this.gamestate == this.GAMESTATE.GAMEOVER)                            //Function added for Pausing the game
         {
             this.drawPausedScreen();
