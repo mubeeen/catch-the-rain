@@ -7,7 +7,7 @@ export default class Rain
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
-        this.maxSpeed = 7;
+        this.maxSpeed = 5;
         this.speed = 0;
         
         this.height = this.gameHeight * 0.084;

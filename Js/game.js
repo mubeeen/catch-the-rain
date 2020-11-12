@@ -16,7 +16,7 @@ export default class Game {
         this.gameHeight = GAME_HEIGHT;
         this.gameWidth = GAME_WIDTH;
         this.ctx = ctx;
-
+        this.lives = 3;
         
         //canvas setting for height to make it responsive
 
@@ -63,8 +63,7 @@ export default class Game {
         new InputHandler(this.paddle,this,this.ctx);
         this.sprites = new Sprites(this.ctx,this.isCollide,this.imgApple);
     }
-    playGame()
-    {
+    playGame() {
         this.gamestate = this.GAMESTATE.RUNNING;
     }
     start(deltaTime) {                                                       //function to initiate the game
@@ -72,15 +71,13 @@ export default class Game {
         //this.gameWidth = document.getElementById('gameScreen').offsetWidth;
         //this.gameHeight = document.getElementById('gameScreen').offsetHeight;
 
-        if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU || this.gamestate == this.GAMESTATE.GAMEOVER)                            //Function added for Pausing the game
-        {
+        if(this.gamestate === this.GAMESTATE.PAUSED || this.gamestate == this.GAMESTATE.MENU || this.gamestate == this.GAMESTATE.GAMEOVER) {            //Function added for Pausing the game
             this.drawPausedScreen();
             this.audio.pause();
             return;
         }
 
-        if(this.isCollide.drop === 3)
-        {
+        if(this.isCollide.drop === this.lives) {
             this.gamestate = this.GAMESTATE.GAMEOVER;
         }
 
