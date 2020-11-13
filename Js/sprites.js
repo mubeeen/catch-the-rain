@@ -1,6 +1,5 @@
-export default class Sprites{
-    constructor(ctx,isCollide)
-    {
+export default class Sprites {
+    constructor(ctx,isCollide) {
         this.ctx = ctx;
         this.isCollide = isCollide;
 

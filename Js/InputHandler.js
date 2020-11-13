@@ -25,12 +25,13 @@ export default class InputHandler {
           });
 
         document.getElementById("pause-play").addEventListener("click", function() {
-            console.log("Pause");
             game.togglePause();
           });
 
         document.getElementById("bk-audio").addEventListener("click", function() {          //error in function need to check
-            game.audio.muted = true;
+            //game.audio.muted = true;
+            console.log("Pause");
+            game.audio.pause();
           });
 
 

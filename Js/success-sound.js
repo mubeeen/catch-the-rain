@@ -1,12 +1,12 @@
 export default class SuccessSound
 {
-    constructor(){
+    constructor() {
         this.audio = new Audio('./assests/catch-rain.mp3');
     }
-    play(){
+    play() {
         this.audio.play();
     }
-    pause(){
+    pause() {
         this.audio.pause();
     }
 }

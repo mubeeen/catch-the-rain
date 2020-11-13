@@ -1,5 +1,4 @@
-export default class Score
-{
+export default class Score {
     constructor(paddel,rain,paddleWidth) {
 
         this.paddlePos = paddel.position;
@@ -22,7 +21,7 @@ export default class Score
             isCollide.isTouched = true;
             isCollide.score += 1;                               //increment (Score) in score on colliding with bar
         }
-        if (this.rainPos.y >= gameHeight){                      //increment (Drop) in drop variable incase of missing the rain
+        if (this.rainPos.y >= gameHeight) {                      //increment (Drop) in drop variable incase of missing the rain
             isCollide.isDroped = true;
             isCollide.drop += 1;
         }

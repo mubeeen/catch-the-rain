@@ -43,8 +43,7 @@ export default class Paddel {
 	moveRight() {						//move paddle to right
 		this.speed = this.maxSpeed;
 	}
-	stop()								//stop paddle when either left or right key press to make the speed equal 0, I implemented this technique to avoid lagging
-	{
+	stop() {							//stop paddle when either left or right key press to make the speed equal 0, I implemented this technique to avoid lagging
 		this.speed = 0;
 	}
 }

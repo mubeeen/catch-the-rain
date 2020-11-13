@@ -1,14 +1,17 @@
 import SuccessSound from './success-sound.js';
+import CalculateSpeed from './calculate-speed.js';
 
-export default class Rain
-{
+export default class Rain {
     constructor(gameWidth, gameHeight) {
 
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
-        this.maxSpeed = 5;
+        this.calSpeed = new CalculateSpeed(this.gameHeight);
+        this.maxSpeed = this.calSpeed.calculateTheSpeed();
+
         this.speed = 0;
+        //console.log(this.gameHeight);
         
         this.height = this.gameHeight * 0.084;
         this.width = this.gameWidth * 0.05;
@@ -31,6 +34,7 @@ export default class Rain
     }  
 
     update(deltaTime,isCollide) {
+
         if(!deltaTime) {
             return;
         }
@@ -54,7 +58,8 @@ export default class Rain
 		if ( this.position.x + this.width >= this.gameWidth ) {
 			this.position.x = this.gameWidth - this.width;
         }
-        
+        this.maxSpeed = this.calSpeed.calculateTheSpeed();
+        this.calSpeed.increaseSpeed();
     }
 
     draw( ctx,imgApple ) {
